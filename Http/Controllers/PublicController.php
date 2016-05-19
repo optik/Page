@@ -3,6 +3,8 @@
 use Illuminate\Contracts\Foundation\Application;
 use Modules\Core\Http\Controllers\BasePublicController;
 use Modules\Page\Repositories\PageRepository;
+use Modules\Media\Repositories\FileRepository;
+
 
 class PublicController extends BasePublicController
 {
@@ -14,12 +16,17 @@ class PublicController extends BasePublicController
      * @var Application
      */
     private $app;
+    /**
+     * @var FileRepository
+     */
+    private $file;
 
-    public function __construct(PageRepository $page, Application $app)
+    public function __construct(PageRepository $page, Application $app, FileRepository $file)
     {
         parent::__construct();
         $this->page = $page;
         $this->app = $app;
+        $this->file = $file;
     }
 
     /**
@@ -34,7 +41,9 @@ class PublicController extends BasePublicController
 
         $template = $this->getTemplateForPage($page);
 
-        return view($template, compact('page'));
+        $cover = $this->file->findFileByZoneForEntity('cover', $page);
+
+        return view($template, compact('page', 'cover'));
     }
 
     /**
@@ -48,7 +57,9 @@ class PublicController extends BasePublicController
 
         $template = $this->getTemplateForPage($page);
 
-        return view($template, compact('page'));
+        $cover = $this->file->findFileByZoneForEntity('cover', $page);
+
+        return view($template, compact('page', 'cover'));
     }
 
     /**

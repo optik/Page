@@ -69,6 +69,11 @@
                         {!! Form::select("template", $all_templates, old("template", $page->template), ['class' => "form-control", 'placeholder' => trans('page::pages.form.template')]) !!}
                         {!! $errors->first("template", '<span class="help-block">:message</span>') !!}
                     </div>
+                    @include('media::admin.fields.file-link', [
+                        'entityClass' => 'Modules\\\\Page\\\\Entities\\\\Page',
+                        'entityId' => $page->id,
+                        'zone' => 'cover'
+                    ])
                 </div>
             </div>
         </div>
