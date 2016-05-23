@@ -68,11 +68,12 @@ class PageController extends AdminBaseController
     public function edit(Page $page)
     {
         $cover = $this->file->findFileByZoneForEntity('cover', $page);
+        $share_image = $this->file->findFileByZoneForEntity('share_image', $page);
 
         $this->assetPipeline->requireJs('ckeditor.js');
         $this->assetPipeline->requireCss('icheck.blue.css');
 
-        return view('page::admin.edit', compact('page', 'cover'));
+        return view('page::admin.edit', compact('page', 'cover', 'share_image'));
     }
 
     /**

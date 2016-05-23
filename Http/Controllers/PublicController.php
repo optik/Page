@@ -42,8 +42,9 @@ class PublicController extends BasePublicController
         $template = $this->getTemplateForPage($page);
 
         $cover = $this->file->findFileByZoneForEntity('cover', $page);
+        $share_image = $this->file->findFileByZoneForEntity('share_image', $page);
 
-        return view($template, compact('page', 'cover'));
+        return view($template, compact('page', 'cover', 'share_image'));
     }
 
     /**
@@ -58,8 +59,9 @@ class PublicController extends BasePublicController
         $template = $this->getTemplateForPage($page);
 
         $cover = $this->file->findFileByZoneForEntity('cover', $page);
+        $share_image = $this->file->findFileByZoneForEntity('share_image', $page);
 
-        return view($template, compact('page', 'cover'));
+        return view($template, compact('page', 'cover', 'share_image'));
     }
 
     /**

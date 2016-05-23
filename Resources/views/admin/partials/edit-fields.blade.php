@@ -91,6 +91,11 @@
                             </option>
                         </select>
                     </div>
+                    @include('media::admin.fields.file-link', [
+                        'entityClass' => 'Modules\\\\Page\\\\Entities\\\\Page',
+                        'entityId' => $page->id,
+                        'zone' => 'share_image'
+                    ])
                 </div>
             </div>
         </div>
